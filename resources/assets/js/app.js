@@ -17,6 +17,26 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
+import Form from './core/Form'
+window.Form = Form
+
+new Vue({
+    el: '#app',
+
+    components: {
+
+    },
+
+    data: {
+        form: new Form({
+            name: '',
+            description: ''
+        })
+    },
+
+    methods: {
+        onSubmit() {
+            this.form.post('/projects')
+        }
+    }
 });
